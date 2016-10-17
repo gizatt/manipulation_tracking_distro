@@ -1,0 +1,6 @@
+[submodule "drake"]
+	path = drake
+	url = https://github.com/RobotLocomotion/drake.git
+[submodule "manipulation_tracking"]
+	path = manipulation_tracking
+	url = https://github.com/gizatt/manipulation_tracking.git
