@@ -7,3 +7,6 @@
 [submodule "kinect"]
 	path = kinect
 	url = https://github.com/OpenHumanoids/kinect.git
+[submodule "apriltags_driver"]
+	path = apriltags_driver
+	url = https://github.com/gizatt/apriltags_driver

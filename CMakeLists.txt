@@ -19,6 +19,17 @@ ExternalProject_Add(kinect
 	INSTALL_COMMAND make install
 	DEPENDS drake)
 
+# This one is actually a pod, so set it up to build as one
+ExternalProject_Add(apriltags_driver
+	PREFIX ${CMAKE_BINARY_DIR}
+	CMAKE_CACHE_ARGS -DCMAKE_INSTALL_PREFIX:PATH=${CMAKE_BINARY_DIR} -DLCM_INCLUDE_DIRS=${CMAKE_BINARY_DIR}/include/lcmtypes
+	SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/apriltags_driver
+	UPDATE_COMMAND ""
+	INSTALL_DIR ${CMAKE_BINARY_DIR}
+	INSTALL_COMMAND make install
+	DEPENDS drake)
+
+
 ExternalProject_Add(manipulation_tracking
 	PREFIX ${CMAKE_BINARY_DIR}
 	CMAKE_CACHE_ARGS -DCMAKE_INSTALL_PREFIX:PATH=${CMAKE_BINARY_DIR}
