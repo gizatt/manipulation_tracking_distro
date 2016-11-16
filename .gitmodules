@@ -10,3 +10,9 @@
 [submodule "apriltags_driver"]
 	path = apriltags_driver
 	url = https://github.com/gizatt/apriltags_driver
+[submodule "drc_core_utils"]
+	path = drc_core_utils
+	url = https://github.com/gizatt/drc_core_utils
+[submodule "apriltags"]
+	path = apriltags
+	url = https://github.com/psiorx/apriltags-pod.git
