@@ -19,3 +19,5 @@ export CLASSPATH=$CLASSPATH:$MT_ROOT/build/share/java/jchart2d-3.2.2.jar
 # add lcm libs to pythonpath
 export PYTHONPATH=$MT_ROOT/build/lib/python2.7/dist-packages:$PYTHONPATH
 export PYTHONPATH=$MT_ROOT/build/lib/python2.7/site-packages:$PYTHONPATH
+
+export GUROBI_DIR=$MT_ROOT/drake/externals/gurobi/

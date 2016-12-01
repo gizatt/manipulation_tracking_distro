@@ -16,3 +16,6 @@
 [submodule "apriltags"]
 	path = apriltags
 	url = https://github.com/psiorx/apriltags-pod.git
+[submodule "pcl"]
+	path = pcl
+	url = https://github.com/pointcloudlibrary/pcl.git
