@@ -23,6 +23,8 @@ endif()
 
 ExternalProject_Add(drake
 	PREFIX ${CMAKE_BINARY_DIR}
+	CMAKE_ARGS
+		-DLCM_INCLUDE_DIRS:PATH=${CMAKE_BINARY_DIR}/include/lcmtypes
 	CMAKE_CACHE_ARGS 
 		-DCMAKE_INSTALL_PREFIX:PATH=${CMAKE_BINARY_DIR} 
 		-DWITH_GUROBI:BOOL=TRUE
@@ -36,7 +38,7 @@ ExternalProject_Add(drake
 # This one is actually a pod, so set it up to build as one
 ExternalProject_Add(kinect
 	PREFIX ${CMAKE_BINARY_DIR}
-	CMAKE_CACHE_ARGS -DCMAKE_INSTALL_PREFIX:PATH=${CMAKE_BINARY_DIR} -DLCM_INCLUDE_DIRS:PATH=${CMAKE_BINARY_DIR}/include/lcmtypes
+	CMAKE_CACHE_ARGS -DCMAKE_INSTALL_PREFIX:PATH=${CMAKE_BINARY_DIR}
 	SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/kinect
 	UPDATE_COMMAND ""
 	INSTALL_DIR ${CMAKE_BINARY_DIR}
@@ -46,7 +48,9 @@ ExternalProject_Add(kinect
 # This one is actually a pod, so set it up to build as one
 ExternalProject_Add(drc_core_utils
 	PREFIX ${CMAKE_BINARY_DIR}
-	CMAKE_CACHE_ARGS -DCMAKE_INSTALL_PREFIX:PATH=${CMAKE_BINARY_DIR} -DLCM_INCLUDE_DIRS:PATH=${CMAKE_BINARY_DIR}/include/lcmtypes
+	CMAKE_ARGS -DCMAKE_PROJECT_drc_utils_INCLUDE:PATH=${CMAKE_SOURCE_DIR}/fix_include_dir.cmake
+	CMAKE_CACHE_ARGS 
+		-DCMAKE_INSTALL_PREFIX:PATH=${CMAKE_BINARY_DIR} 
 	SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/drc_core_utils
 	UPDATE_COMMAND ""
 	INSTALL_DIR ${CMAKE_BINARY_DIR}
@@ -56,7 +60,9 @@ ExternalProject_Add(drc_core_utils
 # This one is actually a pod, so set it up to build as one
 ExternalProject_Add(apriltags
 	PREFIX ${CMAKE_BINARY_DIR}
-	CMAKE_CACHE_ARGS -DCMAKE_INSTALL_PREFIX:PATH=${CMAKE_BINARY_DIR} -DLCM_INCLUDE_DIRS:PATH=${CMAKE_BINARY_DIR}/include/lcmtypes
+	CMAKE_CACHE_ARGS 
+		-DCMAKE_INSTALL_PREFIX:PATH=${CMAKE_BINARY_DIR} 
+		-DLCM_INCLUDE_DIRS:PATH=${CMAKE_BINARY_DIR}/include/lcmtypes
 	SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/apriltags
 	UPDATE_COMMAND ""
 	INSTALL_DIR ${CMAKE_BINARY_DIR}
@@ -66,6 +72,7 @@ ExternalProject_Add(apriltags
 # This one is actually a pod, so set it up to build as one
 ExternalProject_Add(apriltags_driver
 	PREFIX ${CMAKE_BINARY_DIR}
+	CMAKE_ARGS -DCMAKE_PROJECT_drc_apriltags_driver_INCLUDE:PATH=${CMAKE_SOURCE_DIR}/fix_include_dir.cmake
 	CMAKE_CACHE_ARGS -DCMAKE_INSTALL_PREFIX:PATH=${CMAKE_BINARY_DIR} -DLCM_INCLUDE_DIRS:PATH=${CMAKE_BINARY_DIR}/include/lcmtypes
 	SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/apriltags_driver
 	UPDATE_COMMAND ""
@@ -75,7 +82,8 @@ ExternalProject_Add(apriltags_driver
 
 ExternalProject_Add(manipulation_tracking
 	PREFIX ${CMAKE_BINARY_DIR}
-	CMAKE_CACHE_ARGS -DCMAKE_INSTALL_PREFIX:PATH=${CMAKE_BINARY_DIR}
+	CMAKE_ARGS -DCMAKE_PROJECT_manipulation_tracking_INCLUDE:PATH=${CMAKE_SOURCE_DIR}/fix_include_dir.cmake
+	CMAKE_CACHE_ARGS -DCMAKE_INSTALL_PREFIX:PATH=${CMAKE_BINARY_DIR} -DCMAKE_BUILD_TYPE:STRING=Debug
 	SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/manipulation_tracking
 	UPDATE_COMMAND ""
 	INSTALL_COMMAND "" 
